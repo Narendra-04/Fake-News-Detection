@@ -14,7 +14,7 @@
         setError(null);
 
         try {
-          // Make a POST request to the Flask backend's /api/verify endpoint
+         
           const response = await fetch('http://localhost:5000/api/verify', {
             method: 'POST',
             headers: {
@@ -24,17 +24,17 @@
           });
 
           if (!response.ok) {
-            // Handle HTTP errors (e.g., 400, 500 status codes)
+            
             throw new Error(`HTTP error! status: ${response.status}`);
           }
 
-          const data = await response.json(); // Parse the JSON response from the backend
-          setResult(data.result); // Update state with the classification result
+          const data = await response.json(); 
+          setResult(data.result);
         } catch (err) {
           console.error("Error verifying news:", err);
           setError("Failed to connect to the backend or an error occurred.");
         } finally {
-          setLoading(false); // Always stop loading, regardless of success or failure
+          setLoading(false);
         }
       };
 
